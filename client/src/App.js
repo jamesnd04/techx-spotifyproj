@@ -19,7 +19,7 @@ function App() {
   return (
     <div class="">
       <h1 class="h1">Welcome to DJ Spotify!</h1>
-      <p1 class ="p1">This API will recommend new songs to users based on what they have previously listened to.</p1>
+      <p1 class ="p1">This API will recommend new songs to users based on what they've previously listened to.</p1>
       <div class="vertical-center">
         <img src ="https://logosmarcas.net/wp-content/uploads/2020/09/Spotify-Emblema.png" alt="Spotify Logo" style={{width: '400px'}}></img>
       </div>  
