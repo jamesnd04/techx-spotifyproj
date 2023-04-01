@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
+import './App.css';
+
 
 function App() {
   const [data, setData] = useState(null);
@@ -15,15 +17,21 @@ function App() {
   };
 
   return (
-    <div>
-      <h1 className="text-lg">Application Title</h1>
-      <button
+    <div class="">
+      <h1 class="h1">Welcome to DJ Spotify!</h1>
+      <p1 class ="p1">This API will recommend new songs to users based on what they have previously listened to.</p1>
+      <div class="vertical-center">
+        <img src ="https://logosmarcas.net/wp-content/uploads/2020/09/Spotify-Emblema.png" alt="Spotify Logo" style={{width: '400px'}}></img>
+      </div>  
+      <div class="vertical-center1"><button
         onClick={getData}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Click to get data
-      </button>
-      <p>{data ? data["myattribute"] : "No data yet"}</p>
+        className="bg-green-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded display:flex margin:auto"
+        >
+        Click to Login
+      </button></div>
+      <div class="vertical-center3">
+        <p className="text-white">{data ? data["myattribute"] : "No data yet"}</p>
+        </div>
     </div>
   );
 }

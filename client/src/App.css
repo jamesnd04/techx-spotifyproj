@@ -1,0 +1,53 @@
+.h1{
+    color: white;
+    font-size: xx-large;
+    display:flex;
+    justify-content:center;
+
+}
+.p1{
+    color: white;
+    font-size: larger;
+    display:flex;
+    justify-content:center;
+
+}
+
+.vertical-center {
+    
+        margin: 0;
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      
+  }
+
+  .vertical-center1 {
+    
+    margin: 0;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  
+}
+
+.vertical-center3 {
+    
+    margin: 0;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  
+}
+
+  .img{
+    
+    height: 2px;
+    width: 20px;
+  }
