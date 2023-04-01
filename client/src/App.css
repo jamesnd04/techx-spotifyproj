@@ -1,8 +1,13 @@
+*{
+    background-color: rgb(28, 31, 31);
+}
+
+
 .h1{
     color: white;
     font-size: xx-large;
     display:flex;
-    justify-content:center;
+    justify-content:left;
 
 }
 .p1{

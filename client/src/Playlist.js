@@ -31,6 +31,7 @@ function Playlist() {
 
   return (
     <div class="">
+        <h1 class="h1">Your Playlist!</h1>
      </div>
   );
 }
