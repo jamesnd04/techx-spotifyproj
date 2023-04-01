@@ -16,6 +16,19 @@ function App() {
     }
   };
 
+  const [playlist, setPlaylist] = useState(null);
+
+  const getPlaylist = async () => {
+    try {
+      // recode so that this portion goes to the next page with all relevant information
+      const response = await axios.get("http://127.0.0.1:8000/");
+      setData(response.data);
+      console.log("fetched data");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div class="">
       <h1 class="h1">Welcome to DJ Spotify!</h1>
@@ -30,7 +43,7 @@ function App() {
         Click to Login
       </button></div>
       <div class="newPlaylistB"><button
-        onClick={getData}
+        onClick={getPlaylist}
         className="bg-green-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded display:flex margin:auto"
         >
         Get Playlist   
