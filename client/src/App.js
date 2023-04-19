@@ -99,22 +99,19 @@ function App() {
           </button>
         </div>
       </a>
-
+      <div class="logoutButton">
       <button
         onClick={logout}
         className="bg-green-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded display:flex margin:auto"
       >
         Click to logout
       </button>
-
-      <div class="newPlaylistB">
-        <button
-          onClick={(event) => (window.location.href = "/Playlist")}
-          className="bg-green-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded display:flex margin:auto"
-        >
-          Playlist Page
-        </button>
       </div>
+      <div class="audiobar">
+          <audio controls>
+            <source src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" type="audio/mpeg"></source>
+          </audio></div>
+
     </div>
   );
 }

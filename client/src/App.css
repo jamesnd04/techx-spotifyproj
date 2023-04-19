@@ -40,7 +40,7 @@
   
 }
 
-.newPlaylistB {
+.logoutButton {
     margin: 0;
     position: absolute;
     top: 65%;
@@ -64,4 +64,11 @@
     
     height: 2px;
     width: 20px;
+  }
+
+  .audiobar{
+    top:90%;
+    margin: 0;
+    position: absolute;
+    left: 38%;
   }
