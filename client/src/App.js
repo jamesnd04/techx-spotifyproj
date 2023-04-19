@@ -5,6 +5,37 @@ import "./App.css";
 function App() {
   const [token, setToken] = useState("");
 
+  const extractSeeds = (recentlyPlayedData) => {
+    const seedArtists = [];
+    const seedTracks = [];
+
+    recentlyPlayedData.items.forEach((item) => {
+      const artistIds = item.track.artists.map((artist) => artist.id);
+
+      seedArtists.push(...artistIds);
+
+      seedTracks.push(item.track.id);
+    });
+
+    const uniqueSeedArtists = [...new Set(seedArtists)];
+    const uniqueSeedTracks = [...new Set(seedTracks)];
+
+    const seedLimit = 5;
+    const seedArtistsLimit = Math.min(
+      Math.floor(seedLimit / 2),
+      uniqueSeedArtists.length
+    );
+    const seedTracksLimit = seedLimit - seedArtistsLimit;
+
+    const limitedSeedArtists = uniqueSeedArtists.slice(0, seedArtistsLimit);
+    const limitedSeedTracks = uniqueSeedTracks.slice(0, seedTracksLimit);
+
+    return {
+      seedArtists: limitedSeedArtists,
+      seedTracks: limitedSeedTracks,
+    };
+  };
+
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
@@ -38,7 +69,7 @@ function App() {
     };
     getUserInfo();
 
-    const getRecentlyPlayed = async () => {
+    const getRecommendedSongs = async () => {
       if (token) {
         try {
           console.log("HERETOKEN:", token);
@@ -55,13 +86,31 @@ function App() {
               },
             }
           );
-          console.log(data);
+          // console.log(data);
+          const { seedTracks, seedArtists } = extractSeeds(data);
+
+          // console.log("seed info:", seedInfo);
+
+          const { data: recommendedSongs } = await axios.get(
+            "https://api.spotify.com/v1/recommendations",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+              params: {
+                seed_artists: seedArtists.join(","),
+                seed_tracks: seedTracks.join(","),
+                limit: 10,
+              },
+            }
+          );
+          console.log(recommendedSongs);
         } catch (error) {
           console.log(error);
         }
       }
     };
-    getRecentlyPlayed();
+    getRecommendedSongs();
   }, []);
 
   const logout = () => {
@@ -69,9 +118,9 @@ function App() {
     window.localStorage.removeItem("token");
   };
 
-  const login = () => {
-    // TODO: Login function using OUATH
-  };
+  // const login = () => {
+  //   // TODO: Login function using OUATH
+  // };
 
   return (
     <div class="">
@@ -100,18 +149,21 @@ function App() {
         </div>
       </a>
       <div class="logoutButton">
-      <button
-        onClick={logout}
-        className="bg-green-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded display:flex margin:auto"
-      >
-        Click to logout
-      </button>
+        <button
+          onClick={logout}
+          className="bg-green-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded display:flex margin:auto"
+        >
+          Click to logout
+        </button>
       </div>
       <div class="audiobar">
-          <audio controls>
-            <source src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" type="audio/mpeg"></source>
-          </audio></div>
-
+        <audio controls>
+          <source
+            src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3"
+            type="audio/mpeg"
+          ></source>
+        </audio>
+      </div>
     </div>
   );
 }
