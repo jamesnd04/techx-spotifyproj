@@ -16,22 +16,18 @@ function Playlist() {
     }
   };
 
-  const [playlist, setPlaylist] = useState(null);
-
-  const getPlaylist = async () => {
-    try {
-      // recode so that this portion goes to the next page with all relevant information
-      const response = await axios.get("http://127.0.0.1:8000/");
-      setData(response.data);
-      console.log("fetched data");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   return (
     <div class="">
         <h1 class="h1">Your Playlist!</h1>
+        <div class="newPlaylistC"><button
+        onClick={getData}
+        className="bg-green-500 hover:bg-blue-700 text-white font-bold py-8 px-10 rounded display:flex margin:auto"
+        >
+        Get Playlist   
+      </button></div>
+        <div class="vertical-center3">
+        <p className="text-white">{data ? data["myattribute"] : "No data yet"}</p>
+        </div>
      </div>
   );
 }

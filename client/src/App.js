@@ -3,31 +3,11 @@ import { useState } from "react";
 import './App.css';
 
 
+
 function App() {
-  const [data, setData] = useState(null);
-
-  const getData = async () => {
-    try {
-      const response = await axios.get("http://127.0.0.1:8000/");
-      setData(response.data);
-      console.log("fetched data");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const [playlist, setPlaylist] = useState(null);
-
-  const getPlaylist = async () => {
-    try {
-      // recode so that this portion goes to the next page with all relevant information
-      const response = await axios.get("http://127.0.0.1:8000/");
-      setData(response.data);
-      console.log("fetched data");
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const login = () => {
+    // TODO: Login function using OUATH
+  }
 
   return (
     <div class="">
@@ -37,20 +17,18 @@ function App() {
         <img src ="https://logosmarcas.net/wp-content/uploads/2020/09/Spotify-Emblema.png" alt="Spotify Logo" style={{width: '400px'}}></img>
       </div>  
       <div class="loginButton"><button
-        onClick={getData}
+        onClick={login}
         className="bg-green-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded display:flex margin:auto"
         >
         Click to Login
       </button></div>
-      <div class="newPlaylistB"><button
-        onClick={getPlaylist}
+      <div class="newPlaylistB">
+        <button
+        onClick={event =>  window.location.href='/Playlist'}
         className="bg-green-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded display:flex margin:auto"
         >
-        Get Playlist   
+        Playlist Page
       </button></div>
-      <div class="vertical-center3">
-        <p className="text-white">{data ? data["myattribute"] : "No data yet"}</p>
-        </div>
     </div>
   );
 }
