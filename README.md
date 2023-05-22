@@ -1,6 +1,7 @@
 # Spotify Radio Wrapper Project (TechX)
 
 This application will allow users to listen to a Spotify radio generated from their previously played music.
+(This app only works for those whose user details are added in the Spotify Web App Developer site)
 
 ## Installation
 
